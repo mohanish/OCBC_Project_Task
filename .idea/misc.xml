@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CheckstyleConfigurable">
+    <option name="suppFilterFilename" value="" />
+    <option name="suppCommentFilter" value="false" />
+    <option name="offComment" value="CHECKSTYLE\:OFF" />
+    <option name="onComment" value="CHECKSTYLE\:ON" />
+    <option name="checkFormat" value=".*" />
+    <option name="messageFormat" value="" />
+    <option name="checkCPP" value="true" />
+    <option name="checkC" value="true" />
+    <option name="suppNearbyCommentFilter" value="false" />
+    <option name="snCommentFormat" value="SUPPRESS CHECKSTYLE (\w+)" />
+    <option name="snCheckFormat" value="$1" />
+    <option name="snMessageFormat" value="" />
+    <option name="snInfluenceFormat" value="0" />
+    <option name="snCheckCPP" value="true" />
+    <option name="snCheckC" value="true" />
+    <option name="pathToUserRulesConfiguration" value="" />
+    <option name="pathToJarWithRules" value="" />
+  </component>
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/my-projects/OCBC_Project_Task/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/my-projects/OCBC_Project_Task/app/src/main/res/layout/bg_top_beam_of_bottom_dialog.xml" value="0.25" />
+        <entry key="..\:/my-projects/OCBC_Project_Task/app/src/main/res/layout/busy_progress_bar.xml" value="0.25" />
+        <entry key="..\:/my-projects/OCBC_Project_Task/app/src/main/res/layout/fragment_dashboard.xml" value="0.25" />
+        <entry key="..\:/my-projects/OCBC_Project_Task/app/src/main/res/layout/fragment_login.xml" value="0.2359375" />
+        <entry key="..\:/my-projects/OCBC_Project_Task/app/src/main/res/layout/fragment_login2.xml" value="0.103125" />
+        <entry key="..\:/my-projects/OCBC_Project_Task/app/src/main/res/layout/fragment_transfer.xml" value="0.25" />
+        <entry key="..\:/my-projects/OCBC_Project_Task/app/src/main/res/layout/item_mini_statement.xml" value="0.25" />
+        <entry key="..\:/my-projects/OCBC_Project_Task/app/src/main/res/layout/item_mini_statement_header.xml" value="0.25" />
+        <entry key="..\:/my-projects/OCBC_Project_Task/app/src/main/res/layout/item_recipient.xml" value="0.25" />
+        <entry key="..\:/my-projects/OCBC_Project_Task/app/src/main/res/layout/layout_recipient.xml" value="0.25" />
+        <entry key="..\:/my-projects/OCBC_Project_Task/app/src/main/res/menu/menu_dashboard.xml" value="0.25" />
+      </map>
+    </option>
+  </component>
+  <component name="FindBugsConfigurable">
+    <option name="make" value="true" />
+    <option name="effort" value="default" />
+    <option name="priority" value="Medium" />
+    <option name="excludeFilter" value="" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+  <component name="SuppressionsComponent">
+    <option name="suppComments" value="[]" />
+  </component>
+</project>
