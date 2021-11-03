@@ -5,6 +5,6 @@
         android:id="@+id/menuLogout"
         android:icon="@android:drawable/ic_lock_power_off"
         android:title="@string/dashboard_logout"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
 
 </menu>

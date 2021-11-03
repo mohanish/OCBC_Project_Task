@@ -5,6 +5,7 @@ import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.simple.app.ocbc_project_task.BuildConfig
 import com.simple.app.ocbc_project_task.common.core.interceptors.CommonHeaderInterceptor
 import com.simple.app.ocbc_project_task.common.core.interceptors.TokenInjectorInterceptor
 import com.simple.app.ocbc_project_task.common.core.interceptors.TokenManager
@@ -88,7 +89,7 @@ fun createOkHttpClient(
 
 fun createRetrofit(okHttpClient: OkHttpClient, gson: Gson): Retrofit {
     return Retrofit.Builder()
-        .baseUrl("https://localhost:4000/")
+        .baseUrl("http://10.0.2.2:8080/")
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create(gson))
         .build()

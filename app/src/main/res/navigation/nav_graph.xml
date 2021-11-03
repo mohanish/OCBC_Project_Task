@@ -29,9 +29,5 @@
     <fragment
         android:id="@+id/transferFragment"
         android:name="com.simple.app.ocbc_project_task.features.transfer.ui.TransferFragment"
-        android:label="TransferFragment" >
-        <action
-            android:id="@+id/action_transferFragment_to_dashboardFragment"
-            app:destination="@id/dashboardFragment" />
-    </fragment>
+        android:label="TransferFragment" />
 </navigation>

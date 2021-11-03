@@ -7,6 +7,7 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.activity.addCallback
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -22,18 +23,6 @@ class LoginFragment : ViewBindingFragment<FragmentLoginBinding>(R.layout.fragmen
 
     override fun initializeLayoutBinding(view: View): FragmentLoginBinding {
         return FragmentLoginBinding.bind(view)
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val onBackPressedCallback = object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                NavHostFragment.findNavController(this@LoginFragment).navigateUp();
-            }
-        }
-        requireActivity().onBackPressedDispatcher.addCallback(
-            this, onBackPressedCallback
-        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -115,7 +104,5 @@ class LoginFragment : ViewBindingFragment<FragmentLoginBinding>(R.layout.fragmen
 
     private fun showLoginFailed(errorString: String) {
         Toast.makeText(context, errorString, Toast.LENGTH_LONG).show()
-        val action = LoginFragmentDirections.actionLoginFragmentToDashboardFragment()
-        view?.findNavController()?.navigate(action)
     }
 }

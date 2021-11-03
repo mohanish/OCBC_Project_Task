@@ -12,18 +12,19 @@ import javax.inject.Inject
  * retrieve the appropriate tokens.
  */
 class TokenInjectorInterceptor @Inject constructor(
-  private val tokenService: TokenService
+    private val tokenService: TokenService
 ) : Interceptor {
 
-  override fun intercept(chain: Interceptor.Chain): Response {
-    val request = chain.request()
+    override fun intercept(chain: Interceptor.Chain): Response {
+        val request = chain.request()
 
-    val token = tokenService.getToken() ?: return chain.proceed(request)
+        val token = tokenService.getToken() ?: return chain.proceed(request)
 
-    return chain.proceed(request.injectAuthorizationHeader("Bearer ${token.token}"))
-  }
+        return chain.proceed(request.injectAuthorizationHeader(token.token))
+    }
 
-  private fun Request.injectAuthorizationHeader(header: String) = newBuilder()
-    .header("Authorization", header)
-    .build()
+    private fun Request.injectAuthorizationHeader(header: String) = newBuilder()
+        .addHeader("Token", header)
+        .addHeader("Authorization", header)
+        .build()
 }

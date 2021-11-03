@@ -15,6 +15,7 @@ android {
         versionCode 1
         versionName "1.0"
 
+        buildConfigField "String", "API_ENDPOINT", String.format('"http://%s:5000"', InetAddress.getLocalHost().getCanonicalHostName())
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -59,7 +60,7 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:1.2.1"
 
 
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.1"
     implementation "androidx.core:core-ktx:1.7.0"
 

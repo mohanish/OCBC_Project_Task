@@ -6,9 +6,10 @@ import java.math.BigDecimal
 
 @Keep
 class AccountBalancesData {
-    @SerializedName("currency")
-    val currency: String? = ""
 
-    @SerializedName("availableBalance")
+    @SerializedName("status")
+    val status: String = "" // success
+
+    @SerializedName("balance")
     val availableBalance: BigDecimal? = null // 18.5
 }

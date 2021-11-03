@@ -34,9 +34,9 @@ class MiniStatementListAdapter : RecyclerView.Adapter<MiniStatementListViewHolde
 
         private fun bindStatementItem(transferStatementUiData: TransferStatementUiData.MiniStatementItem) {
             itemView.tvTransactionDate.text = transferStatementUiData.date
+            itemView.tvTransactionDescription.text = transferStatementUiData.description
             itemView.tvTransactionAmount.text =
                 "${transferStatementUiData.currency} ${transferStatementUiData.amount}"
-            itemView.tvTransactionDescription.text = transferStatementUiData.description
         }
 
         override fun onClick(view: View?) {

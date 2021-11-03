@@ -1,5 +1,6 @@
 package com.simple.app.ocbc_project_task.common.binding
 
+import android.view.View
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.lifecycle.LifecycleOwner
@@ -13,4 +14,14 @@ fun AppCompatTextView.bindText(
     liveData: LiveData<String>
 ) = apply {
     liveData.observe(lifecycleOwner) { this.text = it }
+}
+
+/**
+ * Binds the enabled state of this [View] to [liveData].
+ */
+fun View.bindEnabled(
+    lifecycleOwner: LifecycleOwner,
+    liveData: LiveData<Boolean>,
+) = apply {
+    liveData.observe(lifecycleOwner) { this.isEnabled = it == true }
 }

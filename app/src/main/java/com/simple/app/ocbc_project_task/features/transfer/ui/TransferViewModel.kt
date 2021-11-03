@@ -21,11 +21,14 @@ class TransferViewModel(
     private val _transferResult = MutableLiveData<TransferAmountData.Data>()
     val transferResult: LiveData<TransferAmountData.Data> = _transferResult
 
+    private val _transferError = MutableLiveData<String>()
+    val transferError: LiveData<String> = _transferError
+
     private val _payeesResult = MutableLiveData<List<PayeesData.Data>>()
     val payeesResult: LiveData<List<PayeesData.Data>> = _payeesResult
 
-    private val _transferError = MutableLiveData<String>()
-    val transferError: LiveData<String> = _transferError
+    private val _payeesResultError = MutableLiveData<String>()
+    val payeesResultError: LiveData<String> = _payeesResultError
 
     fun makeTransfer(
         recipientAccountNo: String,
@@ -44,8 +47,7 @@ class TransferViewModel(
                 }
 
                 override fun onError(apiError: ApiError?) {
-//                    _transferError.value = apiError?.getErrorMessage()
-                    _transferResult.value = createTransferData()?.data
+                    _transferError.value = apiError?.getErrorMessage()
                 }
             }
         )
@@ -60,8 +62,7 @@ class TransferViewModel(
                 }
 
                 override fun onError(apiError: ApiError?) {
-//                    _transferError.value = apiError?.getErrorMessage()
-                    _payeesResult.value = createPayeesData()?.data
+                    _payeesResultError.value = apiError?.getErrorMessage()
                 }
             }
         )

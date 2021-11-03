@@ -2,9 +2,7 @@ package com.simple.app.ocbc_project_task.features.transfer.ui
 
 import android.os.Bundle
 import android.view.View
-import androidx.activity.OnBackPressedCallback
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
+import android.widget.Toast
 import com.simple.app.ocbc_project_task.R
 import com.simple.app.ocbc_project_task.common.binding.ViewBindingFragment
 import com.simple.app.ocbc_project_task.common.binding.withViewLifecycleOwner
@@ -21,18 +19,6 @@ class TransferFragment :
 
     override fun initializeLayoutBinding(view: View): FragmentTransferBinding {
         return FragmentTransferBinding.bind(view)
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val onBackPressedCallback = object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                NavHostFragment.findNavController(this@TransferFragment).navigateUp();
-            }
-        }
-        requireActivity().onBackPressedDispatcher.addCallback(
-            this, onBackPressedCallback
-        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -56,17 +42,20 @@ class TransferFragment :
 
                 }
                 layout.btnSubmitTransfer.setOnClickListener {
-                    makeTransfer(
-                        layout.makeTransferRecipient.text.toString(),
-                        layout.makeTransferAmount.text.toString().toBigDecimal(),
-                        layout.makeTransferDate.text.toString(),
-                        layout.makeTransferDescription.text.toString()
-                    )
+                    val recipient = layout.makeTransferRecipient.text.toString()
+                    val amount = layout.makeTransferAmount.text.toString()
+                    val date = layout.makeTransferDate.text.toString()
+                    val description = layout.makeTransferDescription.text.toString()
+                    if (recipient.isEmpty() && amount.isEmpty() && date.isEmpty() && description.isEmpty())
+                        return@setOnClickListener
+                    makeTransfer(recipient, amount.toBigDecimal(), date, description)
                 }
                 transferResult.observe {
-                    val action =
-                        TransferFragmentDirections.actionTransferFragmentToDashboardFragment()
-                    view.findNavController().navigate(action)
+                    Toast.makeText(context, R.string.success_transfer, Toast.LENGTH_LONG).show()
+                    requireActivity().onBackPressed()
+                }
+                transferError.observe {
+                    Toast.makeText(context, R.string.error_transfer, Toast.LENGTH_LONG).show()
                 }
             }
         }

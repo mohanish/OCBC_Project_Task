@@ -22,4 +22,7 @@
     <string name="transfer_submit">Submit</string>
     <string name="dashboard_account_balance">Account Balance</string>
     <string name="action_make_transfer">Make Transfer</string>
+    <string name="success_transfer">Transfer Success</string>
+    <string name="error_transfer">Transfer Error</string>
+    <string name="error_dashboard">Dashboard Error</string>
 </resources>
