@@ -97,7 +97,6 @@ abstract class BottomSheetDialogFragment : BottomSheetDialogFragment() {
 
     private inner class NextBottomSheetCallback : BottomSheetBehavior.BottomSheetCallback() {
         override fun onStateChanged(v: View, state: Int) {
-            val behavior = BottomSheetBehavior.from(v)
             if (state == BottomSheetBehavior.STATE_HIDDEN) {
                 onStateHidden()
                 dismissAllowingStateLoss()

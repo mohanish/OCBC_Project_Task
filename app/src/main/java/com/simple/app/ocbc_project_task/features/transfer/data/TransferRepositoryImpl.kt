@@ -4,7 +4,7 @@ import com.simple.app.ocbc_project_task.features.transfer.data.model.PayeesData
 import com.simple.app.ocbc_project_task.features.transfer.data.model.TransferAmountData
 import com.simple.app.ocbc_project_task.features.transfer.data.usecase.TransferUseCase
 
-class TransferRepositoryImpl(private val transferApi: TransferApi) : TransferRepository {
+open class TransferRepositoryImpl(private val transferApi: TransferApi) : TransferRepository {
 
     override suspend fun makeTransfer(params: Any?): TransferAmountData {
         val transferRequestParams = params as TransferUseCase.TransferRequestParams

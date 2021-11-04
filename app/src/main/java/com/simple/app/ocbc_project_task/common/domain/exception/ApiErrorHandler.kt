@@ -1,7 +1,5 @@
 package com.simple.app.ocbc_project_task.common.domain.exception
 
-import com.simple.app.ocbc_project_task.common.domain.exception.ApiError
-import com.simple.app.ocbc_project_task.common.domain.exception.UNKNOWN_ERROR_MESSAGE
 import retrofit2.HttpException
 import java.io.IOException
 import java.net.SocketTimeoutException

@@ -24,7 +24,7 @@ class TransferFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        transferViewModel.getPayees()
+        transferViewModel.initialise()
         initObservers()
         initListeners()
     }

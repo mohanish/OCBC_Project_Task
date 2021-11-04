@@ -31,6 +31,11 @@ class DashboardViewModel(
     private val _dashboardError = MutableLiveData<String>()
     val dashboardError: LiveData<String> = _dashboardError
 
+    fun initialise() {
+        getAccountBalancesData()
+        getMiniStatementData()
+    }
+
     private fun AccountBalancesData.toAvailableBalanceUi(): String =
         "SGD ${this.availableBalance}"
 

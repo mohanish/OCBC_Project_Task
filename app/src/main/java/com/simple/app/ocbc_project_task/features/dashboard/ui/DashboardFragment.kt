@@ -39,8 +39,7 @@ class DashboardFragment :
                 dashboardError.observe {
                     Toast.makeText(context, R.string.error_dashboard, Toast.LENGTH_LONG).show()
                 }
-                getMiniStatementData()
-                getAccountBalancesData()
+                initialise()
             }
         }
     }

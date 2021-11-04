@@ -1,6 +1,6 @@
 package com.simple.app.ocbc_project_task.common.core.interceptors
 
-class TokenManager : TokenService {
+open class TokenManager : TokenService {
     private var token: TokenResponse? = null
 
     override fun getToken(): TokenResponse? {

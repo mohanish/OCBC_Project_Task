@@ -4,7 +4,7 @@ import com.simple.app.ocbc_project_task.common.domain.usecase.BaseUseCase
 import com.simple.app.ocbc_project_task.features.dashboard.data.DashboardRepository
 import com.simple.app.ocbc_project_task.features.dashboard.data.model.TransactionsStatementData
 
-class DashboardTransactionStatementUseCase constructor(
+open class DashboardTransactionStatementUseCase constructor(
     private val dashboardRepository: DashboardRepository
 ) : BaseUseCase<TransactionsStatementData, Any?>() {
 
