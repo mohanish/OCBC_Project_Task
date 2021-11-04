@@ -18,7 +18,7 @@ class MiniStatementListAdapter : RecyclerView.Adapter<MiniStatementListViewHolde
         view: View,
         private val onClickListener: (position: Int) -> Unit,
     ) : RecyclerView.ViewHolder(view), View.OnClickListener {
-
+        val context = view.context
         fun bind(transferStatementUiData: TransferStatementUiData?) {
             when (transferStatementUiData) {
                 is TransferStatementUiData.MonthHeader -> bindMonthHeader(transferStatementUiData)
@@ -37,6 +37,18 @@ class MiniStatementListAdapter : RecyclerView.Adapter<MiniStatementListViewHolde
             itemView.tvTransactionDescription.text = transferStatementUiData.description
             itemView.tvTransactionAmount.text =
                 "${transferStatementUiData.currency} ${transferStatementUiData.amount}"
+            when (transferStatementUiData.type) {
+                TYPE_RECEIVE -> {
+                    itemView.tvTransactionAmount.setTextColor(
+                        context.resources.getColor(android.R.color.holo_green_light, null)
+                    )
+                }
+                else -> {
+                    itemView.tvTransactionAmount.setTextColor(
+                        context.resources.getColor(android.R.color.holo_red_light, null)
+                    )
+                }
+            }
         }
 
         override fun onClick(view: View?) {
@@ -89,5 +101,7 @@ class MiniStatementListAdapter : RecyclerView.Adapter<MiniStatementListViewHolde
     companion object {
         const val ITEM_TYPE_YEAR_HEADER = 1
         const val ITEM_TYPE_TRANSACTION_DETAILS = 2
+        const val TYPE_RECEIVE = "receive"
+        const val TYPE_TRANSFER = "transfer"
     }
 }

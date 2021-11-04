@@ -22,9 +22,6 @@
         <action
             android:id="@+id/action_dashboardFragment_to_transferFragment"
             app:destination="@id/transferFragment" />
-        <action
-            android:id="@+id/action_dashboardFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/transferFragment"

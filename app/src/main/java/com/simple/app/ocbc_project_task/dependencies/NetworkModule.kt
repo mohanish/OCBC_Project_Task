@@ -5,11 +5,9 @@ import com.chuckerteam.chucker.api.ChuckerCollector
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.simple.app.ocbc_project_task.BuildConfig
 import com.simple.app.ocbc_project_task.common.core.interceptors.CommonHeaderInterceptor
 import com.simple.app.ocbc_project_task.common.core.interceptors.TokenInjectorInterceptor
 import com.simple.app.ocbc_project_task.common.core.interceptors.TokenManager
-import com.simple.app.ocbc_project_task.common.core.interceptors.TokenResponseInterceptor
 import com.simple.app.ocbc_project_task.features.dashboard.data.DashboardApi
 import com.simple.app.ocbc_project_task.features.login.data.LoginApi
 import com.simple.app.ocbc_project_task.features.transfer.data.TransferApi
@@ -31,8 +29,9 @@ val NetworkModule = module {
     single { createRetrofit(get(), get()) }
     single {
         createOkHttpClient(
-            createChuckerInterceptor(get()), createCommonHeadersInterceptor(),
-            createTokenInjectorInterceptor(get()), createTokenResponseInterceptor(get(), get())
+            createChuckerInterceptor(get()),
+            createCommonHeadersInterceptor(),
+            createTokenInjectorInterceptor(get())
         )
     }
 }
@@ -58,10 +57,6 @@ fun createTokenInjectorInterceptor(service: TokenManager): TokenInjectorIntercep
     return TokenInjectorInterceptor(service)
 }
 
-fun createTokenResponseInterceptor(gson: Gson, service: TokenManager): TokenResponseInterceptor {
-    return TokenResponseInterceptor(gson, service)
-}
-
 fun createTokenService(): TokenManager {
     return TokenManager()
 }
@@ -69,8 +64,7 @@ fun createTokenService(): TokenManager {
 fun createOkHttpClient(
     chuckerInterceptor: ChuckerInterceptor,
     addCommonHeaders: CommonHeaderInterceptor,
-    injectToken: TokenInjectorInterceptor,
-    storeIncomingTokens: TokenResponseInterceptor,
+    injectToken: TokenInjectorInterceptor
 ): OkHttpClient {
     val httpLoggingInterceptor = HttpLoggingInterceptor()
     httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
@@ -81,7 +75,6 @@ fun createOkHttpClient(
         .addInterceptor(httpLoggingInterceptor)
         .addInterceptor(addCommonHeaders)
         .addInterceptor(injectToken)
-        .addInterceptor(storeIncomingTokens)
         .addInterceptor(chuckerInterceptor)
 
     return builder.build()

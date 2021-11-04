@@ -25,4 +25,5 @@
     <string name="success_transfer">Transfer Success</string>
     <string name="error_transfer">Transfer Error</string>
     <string name="error_dashboard">Dashboard Error</string>
+    <string name="error_payees">Error payees</string>
 </resources>

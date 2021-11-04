@@ -10,7 +10,7 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val DashboardModule = module {
-    viewModel { DashboardViewModel(get(), get()) }
+    viewModel { DashboardViewModel(get(), get(), get()) }
     single { createDashboardRepository(get()) }
     single { createDashboardUseCase(get()) }
     single { createDashboardAccountBalanceUseCase(get()) }

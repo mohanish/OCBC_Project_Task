@@ -1,11 +1,11 @@
 package com.simple.app.ocbc_project_task.dependencies
 
-import com.simple.app.ocbc_project_task.features.transfer.ui.TransferViewModel
 import com.simple.app.ocbc_project_task.features.transfer.data.TransferApi
 import com.simple.app.ocbc_project_task.features.transfer.data.TransferRepository
 import com.simple.app.ocbc_project_task.features.transfer.data.TransferRepositoryImpl
 import com.simple.app.ocbc_project_task.features.transfer.data.usecase.TransferPayeesUseCase
 import com.simple.app.ocbc_project_task.features.transfer.data.usecase.TransferUseCase
+import com.simple.app.ocbc_project_task.features.transfer.ui.TransferViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

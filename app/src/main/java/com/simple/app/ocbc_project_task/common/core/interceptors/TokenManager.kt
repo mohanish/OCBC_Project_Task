@@ -8,7 +8,6 @@ class TokenManager : TokenService {
     }
 
     override fun setToken(token: TokenResponse) {
-        clear()
         this.token = token
     }
 

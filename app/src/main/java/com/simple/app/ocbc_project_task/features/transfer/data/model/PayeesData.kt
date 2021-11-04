@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 @Keep
 data class PayeesData(
-    @SerializedName("data") val `data`: List<Data> = listOf(),
+    @SerializedName("data") val data: List<Data> = listOf(),
     @SerializedName("status") val status: String = "" // success
 ) {
     @Keep

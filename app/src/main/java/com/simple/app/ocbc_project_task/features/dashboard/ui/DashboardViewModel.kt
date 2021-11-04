@@ -1,8 +1,9 @@
 package com.simple.app.ocbc_project_task.features.dashboard.ui
 
 import android.text.format.DateFormat
+import android.util.Log
 import androidx.lifecycle.*
-import com.google.gson.Gson
+import com.simple.app.ocbc_project_task.common.core.interceptors.TokenManager
 import com.simple.app.ocbc_project_task.common.domain.exception.ApiError
 import com.simple.app.ocbc_project_task.common.domain.usecase.BaseUsecaseResponse
 import com.simple.app.ocbc_project_task.features.dashboard.data.model.AccountBalancesData
@@ -13,7 +14,8 @@ import java.math.BigDecimal
 
 class DashboardViewModel(
     private val dashboardTransactionStatementUseCase: DashboardTransactionStatementUseCase,
-    private val dashboardAccountBalancesUseCase: DashboardAccountBalancesUseCase
+    private val dashboardAccountBalancesUseCase: DashboardAccountBalancesUseCase,
+    private val tokenService: TokenManager
 ) : ViewModel() {
 
     private val _miniStatementData = MutableLiveData<List<TransactionsStatementData.Data>>()
@@ -51,8 +53,8 @@ class DashboardViewModel(
         dashboardTransactionStatementUseCase.invoke(
             viewModelScope, null,
             object : BaseUsecaseResponse<TransactionsStatementData> {
-                override fun onSuccess(transactionsStatementData: TransactionsStatementData) {
-                    _miniStatementData.value = transactionsStatementData.data
+                override fun onSuccess(result: TransactionsStatementData) {
+                    _miniStatementData.value = result.data
                 }
 
                 override fun onError(apiError: ApiError?) {
@@ -83,6 +85,10 @@ class DashboardViewModel(
             }
         }
         return transferStatementUiData.toList()
+    }
+
+    fun logout() {
+        tokenService.clear()
     }
 
     private fun TransactionsStatementData.Data.toMonthYearConvert(): String =

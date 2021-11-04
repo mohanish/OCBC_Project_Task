@@ -13,7 +13,6 @@ import com.simple.app.ocbc_project_task.common.binding.ViewBindingFragment
 import com.simple.app.ocbc_project_task.common.binding.bindText
 import com.simple.app.ocbc_project_task.common.binding.withViewLifecycleOwner
 import com.simple.app.ocbc_project_task.databinding.FragmentDashboardBinding
-import com.simple.app.ocbc_project_task.features.login.ui.LoginFragmentDirections
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DashboardFragment :
@@ -60,8 +59,8 @@ class DashboardFragment :
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.menuLogout -> {
-                val action = DashboardFragmentDirections.actionDashboardFragmentToLoginFragment()
-                view?.findNavController()?.navigate(action)
+                dashboardViewModel.logout()
+                requireActivity().finishAndRemoveTask()
                 return true
             }
             else -> super.onOptionsItemSelected(item)

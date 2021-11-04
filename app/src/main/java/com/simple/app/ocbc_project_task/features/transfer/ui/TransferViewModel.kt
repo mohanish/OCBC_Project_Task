@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.gson.Gson
+import com.simple.app.ocbc_project_task.common.core.interceptors.TokenManager
 import com.simple.app.ocbc_project_task.common.domain.exception.ApiError
 import com.simple.app.ocbc_project_task.common.domain.usecase.BaseUsecaseResponse
 import com.simple.app.ocbc_project_task.features.transfer.data.model.PayeesData
@@ -42,8 +43,8 @@ class TransferViewModel(
         transferUseCase.invoke(
             viewModelScope, transferRequestParams,
             object : BaseUsecaseResponse<TransferAmountData> {
-                override fun onSuccess(transferAmountData: TransferAmountData) {
-                    _transferResult.value = transferAmountData.data
+                override fun onSuccess(result: TransferAmountData) {
+                    _transferResult.value = result.data
                 }
 
                 override fun onError(apiError: ApiError?) {
@@ -57,8 +58,8 @@ class TransferViewModel(
         transferPayeesUseCase.invoke(
             viewModelScope, null,
             object : BaseUsecaseResponse<PayeesData> {
-                override fun onSuccess(payeesData: PayeesData) {
-                    _payeesResult.value = payeesData.data
+                override fun onSuccess(result: PayeesData) {
+                    _payeesResult.value = result.data
                 }
 
                 override fun onError(apiError: ApiError?) {

@@ -22,7 +22,8 @@ class LoginViewModelTest : BaseViewModelTests<LoginViewModel>() {
 
     override fun createViewModel(): LoginViewModel {
         return LoginViewModel(
-            authenticationUseCase = authenticationUseCase
+            authenticationUseCase = authenticationUseCase,
+            tokenService = createTokenService()
         )
     }
 

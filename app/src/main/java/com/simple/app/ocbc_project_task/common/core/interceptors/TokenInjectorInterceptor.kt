@@ -12,7 +12,7 @@ import javax.inject.Inject
  * retrieve the appropriate tokens.
  */
 class TokenInjectorInterceptor @Inject constructor(
-    private val tokenService: TokenService
+    private val tokenService: TokenManager
 ) : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {

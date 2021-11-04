@@ -14,7 +14,7 @@ import javax.inject.Inject
  */
 class TokenResponseInterceptor @Inject constructor(
     private val gson: Gson,
-    private val tokenService: TokenService
+    private val tokenService: TokenManager
 ) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val response = chain.proceed(chain.request())

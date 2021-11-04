@@ -26,7 +26,8 @@ class TransferViewModelTest : BaseViewModelTests<TransferViewModel>() {
     override fun createViewModel(): TransferViewModel {
         return TransferViewModel(
             transferUseCase = transferUseCase,
-            transferPayeesUseCase = transferPayeesUseCase
+            transferPayeesUseCase = transferPayeesUseCase,
+            createTokenService = createTokenService()
         )
     }
 

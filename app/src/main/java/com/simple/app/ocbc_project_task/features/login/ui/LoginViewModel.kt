@@ -6,12 +6,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.simple.app.ocbc_project_task.R
+import com.simple.app.ocbc_project_task.common.core.interceptors.TokenManager
 import com.simple.app.ocbc_project_task.common.core.interceptors.TokenResponse
 import com.simple.app.ocbc_project_task.common.domain.exception.ApiError
 import com.simple.app.ocbc_project_task.common.domain.usecase.BaseUsecaseResponse
 import com.simple.app.ocbc_project_task.features.login.data.usecase.AuthenticationUseCase
 
-class LoginViewModel(private val authenticationUseCase: AuthenticationUseCase) : ViewModel() {
+class LoginViewModel(
+    private val authenticationUseCase: AuthenticationUseCase,
+    val tokenService: TokenManager
+) : ViewModel() {
 
     private val _loginForm = MutableLiveData<LoginFormState>()
     val loginFormState: LiveData<LoginFormState> = _loginForm
@@ -27,8 +31,9 @@ class LoginViewModel(private val authenticationUseCase: AuthenticationUseCase) :
         authenticationUseCase.invoke(
             viewModelScope, loginRequestParams,
             object : BaseUsecaseResponse<TokenResponse> {
-                override fun onSuccess(trackerData: TokenResponse) {
-                    _loginResult.value = trackerData
+                override fun onSuccess(result: TokenResponse) {
+                    tokenService.setToken(result)
+                    _loginResult.value = result
                 }
 
                 override fun onError(apiError: ApiError?) {

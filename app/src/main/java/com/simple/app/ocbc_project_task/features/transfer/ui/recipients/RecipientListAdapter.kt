@@ -17,15 +17,13 @@ class RecipientListAdapter() :
     class RecipientsListViewHolder(
         view: View,
         private val onClickListener: (position: Int) -> Unit,
-    ) : RecyclerView.ViewHolder(view), View.OnClickListener {
+    ) : RecyclerView.ViewHolder(view) {
 
         fun bind(transferStatementUiData: PayeesData.Data?) {
             itemView.tvRecipient.text = transferStatementUiData?.accountHolderName
-        }
-
-        override fun onClick(view: View?) {
-            if (bindingAdapterPosition == -1) return
-            onClickListener.invoke(bindingAdapterPosition)
+            itemView.tvRecipient.setOnClickListener {
+                onClickListener.invoke(bindingAdapterPosition)
+            }
         }
     }
 
@@ -56,12 +54,8 @@ class RecipientListAdapter() :
     }
 
     fun setItems(list: List<PayeesData.Data?>) {
+        recipientsList.clear()
         recipientsList.addAll(list)
         notifyDataSetChanged()
-    }
-
-    companion object {
-        const val ITEM_TYPE_YEAR_HEADER = 1
-        const val ITEM_TYPE_TRANSACTION_DETAILS = 2
     }
 }
